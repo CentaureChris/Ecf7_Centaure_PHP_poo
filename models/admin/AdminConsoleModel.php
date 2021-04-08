@@ -2,14 +2,28 @@
 
 class AdminConsoleModel extends Driver{
 
-    public function getConsole()
+    public function getConsole($search=null)
     {
-        $sql = "SELECT * FROM console c 
-                INNER JOIN marque m 
-                INNER JOIN type t 
-                WHERE c.marque = m.id_marque AND c.type = t.id_type ";
+        if(!empty($search)){
 
-        $result = $this->getRequest($sql);
+            $sql = "SELECT * FROM console c 
+            INNER JOIN marque m 
+            INNER JOIN type t 
+            ON c.marque = m.id_marque AND c.type = t.id_type
+            WHERE nom_marque LIKE :marque OR modele LIKE :modele OR nom_type LIKE :type  OR capacité LIKE :capacite";
+
+            $searchParam = ["marque"=>"$search%", "modele"=>"$search%", "type"=>"$search%", "capacite"=>"$search%"];
+            $result = $this->getRequest($sql,$searchParam);
+
+        }else{
+            $sql = "SELECT * FROM console c 
+            INNER JOIN marque m 
+            INNER JOIN type t 
+            WHERE c.marque = m.id_marque AND c.type = t.id_type ";
+
+            $result = $this->getRequest($sql);
+            }
+        
 
         $consoles = $result->fetchAll(PDO::FETCH_OBJ);
         $datas = [];
@@ -35,7 +49,13 @@ class AdminConsoleModel extends Driver{
             array_push($datas,$c);
 
         }
-        return $datas;
+        if($result->rowCount() == 0){
+            return "No match Found...!!";
+               
+    
+            }else{
+            return $datas;
+        }
     }
 
     public function removeConsole(Console $cParam) 

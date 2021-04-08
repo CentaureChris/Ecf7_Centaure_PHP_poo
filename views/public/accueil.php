@@ -31,7 +31,7 @@ require_once('./views/public/templatePublic.php');
           <div class="row my-3">
               <div class="col-8">
                 <div class="row row-cols-1 row-cols-md-2 g-4">
-                <?php foreach($console as $car) { ?>
+                <?php if(is_array($console)){ foreach($console as $car) { ?>
                     <div class="col">
                       <div class="card">
                         <img src="./assets/images/<?= $car->getImage() ?>" class="card-img-top" alt="..." width="200px" height="200px">
@@ -84,6 +84,10 @@ require_once('./views/public/templatePublic.php');
                         </div>
                       </div>
                     </div>
+                    <?php } }else{ ?>
+                    <h2 class="text-white m-5">
+                    <?= $console ?>
+                    </h2>
                     <?php } ?>
                     <div class="col">
                     
