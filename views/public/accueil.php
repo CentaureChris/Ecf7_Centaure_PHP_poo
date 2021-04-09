@@ -113,6 +113,6 @@ require_once('./views/public/templatePublic.php');
           
     </div>
     <?php
-
+require_once('footerPublic.php');
 // $contenu= ob_get_clean();
 ?>

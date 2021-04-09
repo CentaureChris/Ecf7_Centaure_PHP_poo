@@ -107,14 +107,16 @@ class AdminConsoleModel extends Driver{
         }
     }
     public function updateConsole(Console $updateC){
-        if($updateC->getImage() === null){
+        if($updateC->getImage() === ""){
+
             $sql = "UPDATE console
-                    SET marque = :marque, modele = :modele, prix = :prix, capacité = :capacité, quantite = :quantite, type = :type
-                    WHERE id_console = :id ";
-                
-            $tabParams = ["marque"=>$updateC->getMarque()->getId_marque(), "modele"=>$updateC->getModele(), "prix"=>$updateC->getPrix(), "capacité"=>$updateC->getCapacite(), "quantite"=>$updateC->getQuantite(), "type"=>$updateC->getType()->getId_type(), "id"=>$updateC->getId()];
+            SET marque = :marque, modele = :modele, prix = :prix, capacité = :capacite, quantite = :quantite, type = :type
+            WHERE id_console =:id ";
+        
+            $tabParams = ["marque"=>$updateC->getMarque()->getId_marque(),"modele"=>$updateC->getModele(), "prix"=>$updateC->getPrix(), "capacite"=>$updateC->getCapacite(), "quantite"=>$updateC->getQuantite(), "type"=>$updateC->getType()->getId_type(), "id"=>$updateC->getId()];
 
         }else{
+
             $sql = "UPDATE console
                     SET marque = :marque, modele = :modele, prix = :prix, capacité = :capacite, quantite = :quantite, type = :type, image = :image
                     WHERE id_console = :id ";
@@ -127,3 +129,4 @@ class AdminConsoleModel extends Driver{
         return $result->rowCount();
         }
 }
+

@@ -16,9 +16,21 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
 </head>
+<style>
+body{
+  background-image: url('./assets/images/adminwp.jpeg')!important ;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+}
+</style>
 <body>
+  <h3 class="m-3"><a href="index.php" class="text-white"><i class="fas fa-home">Accueil</i></a></h3>
+  <?php if(isset($_SESSION['Auth'])){ ?>
+<h3 class="m-3 text-end">Bienvenue <?= ucfirst($_SESSION['Auth']->nom)." ".ucfirst($_SESSION['Auth']->prenom)  ;?> </h3>
+<?php } ?>
    <ul class="menu cf">
-  <li><a href="index.php?action=logout" class="" onclick="return confirm('Valider la deconnexion?')"><i class="fas fa-sign-out-alt" ></i> Admin</a></li>
+  <li><a href="index.php?action=logout" class="" onclick="return confirm('Valider la deconnexion?')"><i class="fas fa-sign-out-alt" ></i> Quitter</a></li>
   <li>
     <a href="index.php?action=list_console"><i class="fas fa-gamepad fa-2x"></i> Console</a>
  	
@@ -40,8 +52,6 @@
     </ul>			
   </li>
 </ul>
-<?php if(isset($_SESSION['Auth'])){ ?>
-<h3>Bienvenue <?= $_SESSION['Auth']->nom." ".$_SESSION['Auth']->prenom  ;?> </h3>
-<?php } ?>
+
 </body>
 </html>

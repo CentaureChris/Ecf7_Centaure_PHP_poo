@@ -1,30 +1,30 @@
 <?php
 
-require_once('./models/Driver.php');
+// require_once('./models/Driver.php');
 
-require_once('./models/Console.php');
-require_once('./models/admin/AdminConsoleModel.php');
-require_once('./controllers/admin/AdminConsoleController.php');
+// require_once('./models/Console.php');
+// require_once('./models/admin/AdminConsoleModel.php');
+// require_once('./controllers/admin/AdminConsoleController.php');
 
-require_once('./models/Marque.php');
-require_once('./models/admin/AdminMarqueModel.php');
-require_once('./controllers/admin/AdminMarqueController.php');
+// require_once('./models/Marque.php');
+// require_once('./models/admin/AdminMarqueModel.php');
+// require_once('./controllers/admin/AdminMarqueController.php');
 
-require_once('./models/User.php');
-require_once('./models/admin/AdminUserModel.php');
-require_once('./controllers/admin/AdminUserController.php');
+// require_once('./models/User.php');
+// require_once('./models/admin/AdminUserModel.php');
+// require_once('./controllers/admin/AdminUserController.php');
 
-require_once('./models/Type.php');
-require_once('./models/admin/AdminTypeModel.php');
+// require_once('./models/Type.php');
+// require_once('./models/admin/AdminTypeModel.php');
 
-require_once('./models/Rank.php');
+// require_once('./models/Rank.php');
 
-require_once('./controllers/admin/AuthController.php');
+// require_once('./controllers/admin/AuthController.php');
 
-require_once('./controllers/public/PublicController.php');
-require_once('./models/public/PublicModel.php');
+// require_once('./controllers/public/PublicController.php');
+// require_once('./models/public/PublicModel.php');
 
-
+require_once('./app/autoload.php');
 
 
 

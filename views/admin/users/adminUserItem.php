@@ -32,7 +32,7 @@ require_once('./views/templateAdmin.php');
                 <td><?= $user->nom_rank; ?></td>
                 <?php if(isset($_SESSION['Auth']) && $_SESSION['Auth']->rank == 1){ ?>
                 <td>
-                    <a href="index.php?action=edit_console&id=<?= $user->id_user ?>"><i class="fas fa-pen btn btn-success"></i></a> 
+                    <a href="#"><i class="fas fa-pen btn btn-success"></i></a> 
                     <a href="index.php?action=delete_user&id=<?= $user->id_user ?>" onclick="return confirm('Valider la supression??')"><i class="fas fa-trash btn btn-danger"></i></a>
                 </td>
                 <?php } ?>

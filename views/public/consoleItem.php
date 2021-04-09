@@ -1,6 +1,5 @@
 <?php ob_start();
 require_once('./views/public/templatePublic.php');
-
 ?>
 
 <div class="container mt-5">
@@ -13,20 +12,20 @@ require_once('./views/public/templatePublic.php');
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title text-end"><?=$marque;?>-<?=$modele;?></h5>
-            <p class="card-text text-end text-danger">Prix: <?=$prix;?> €</p>
+            <h5 class="card-title text-end"><?php echo ucfirst($marque) ;?> <?= $modele;?></h5>
+            <h5 class="card-text text-end text-danger">Prix: <?=$prix;?> €</h5>
           </div>
         </div>
       </div>
     </div>
   </div>
   <div class="col-3">
-  <h4 class="text-center">Validation</h4>
+  <h4 class="text-center text-white">Validation</h4>
     <form>
       <label for="email" class="text-white">Email*</label>
       <input type="email"id="email" class="form-control" placeholder="Votre email svp...">
       <label for="quant" class="text-white">Quantite*</label>
-      <input type="number" id="quant" class="form-control" min="1" value="1"  max="<?= $nb;?>">
+      <input type="number" id="quant" class="form-control text-end" min="1" value="1"  max="<?= $nb;?>">
       <input type="hidden" id="ref" value="<?=$id;?>">
       <input type="hidden" id="modele" value="<?=$modele;?>">
       <input type="hidden" id="marque" value="<?= $marque;?>">
@@ -42,3 +41,7 @@ require_once('./views/public/templatePublic.php');
 <?php 
     // $contenu = ob_get_clean();
 ?>
+
+<div class="fixed-bottom">
+<?php require_once('footerPublic.php'); ?>
+</div>

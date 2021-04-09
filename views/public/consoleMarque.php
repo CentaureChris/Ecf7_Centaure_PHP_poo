@@ -107,3 +107,5 @@ require_once('./views/public/templatePublic.php');
 
 // $contenu= ob_get_clean();
 ?>
+
+<?php require_once('footerPublic.php'); ?>

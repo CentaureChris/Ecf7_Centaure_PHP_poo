@@ -94,6 +94,8 @@ class AdminConsoleController
             
                 if(isset($_POST['submit'])){
 
+            
+
                     $marque = trim(addslashes(htmlentities($_POST['marque'])));
                     $editConsole->getMarque()->setId_marque($marque);
         
@@ -112,13 +114,14 @@ class AdminConsoleController
                     $prix = trim(addslashes(htmlentities($_POST['prix'])));
                     $editConsole->setPrix($prix);
         
+                   
                     $image = $_FILES['image']['name'];
                     $editConsole->setImage($image);
-        
+                    
                     $destination = "./assets/images/";
                     move_uploaded_file($_FILES['image']['tmp_name'], $destination . $image);
         
-                    $nb = $this->adcm->updateConsole($editConsole,$image);
+                    $nb = $this->adcm->updateConsole($editConsole);
     
                 if($nb>0) {
                     header('location:index.php?action=list_console');

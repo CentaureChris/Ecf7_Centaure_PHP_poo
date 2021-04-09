@@ -1,5 +1,5 @@
 <?php
-// session_start();
+session_start();
 
 use Stripe\Customer;
 
@@ -150,8 +150,8 @@ class PublicController{
                     $mail->Port       = 587;                                    //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
     
                     //Recipients
-                    $mail->setFrom('adouken972@hotmail.fr', 'BuyCar');
-                    $mail->addAddress('$eamil', 'Mr/Mme');     //Add a recipient
+                    $mail->setFrom('c.centaure972@gmail.com', 'BuyCar');
+                    $mail->addAddress('$mail', 'Mr/Mme');     //Add a recipient
                     // $mail->addAddress('ellen@example.com');               //Name is optional
                     // $mail->addReplyTo('info@example.com', 'Information');
                     // $mail->addCC('cc@example.com');
@@ -163,7 +163,7 @@ class PublicController{
     
                     //Content
                     $mail->isHTML(true);                                  //Set email format to HTML
-                    $mail->Subject = 'Here is the subject';
+                    $mail->Subject = 'Confirmation de paiement.';
                     $mail->Body    = "<h2>Confirmation d'achat</h2>
                     <div>
                      <b>Marque: </b>".$marque."
