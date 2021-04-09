@@ -38,7 +38,7 @@ class PublicController{
             $c->getMarque()->setId_marque($id);
             $tabMar = $this->pubmm->getMarques();
             $cons = $this->pubm->findConsoleByMarque($c);
-            // require_once('./views/public/consoleMarque.php');
+            require_once('./views/public/consoleMarque.php');
       
         }else{
             if( isset($_POST['soumis']) && !empty($_POST['search'])){
