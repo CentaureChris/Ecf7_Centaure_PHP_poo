@@ -41,7 +41,13 @@ require_once('./views/public/templatePublic.php');
                           <ul class="list-group list-unstyled">
                           <li class="list-group-item d-flex justify-content-between align-items-center">
                             Marque 
-                              <span class="badge bg-primary rounded-pill"><?= strtoupper($car->getMarque()->getNom_marque()) ?></span>
+                            <?php if($car->getMarque()->getId_marque() == 1){ ?>
+                              <span class="badge bg-primary rounded-pill"><i class="fab fa-playstation"></i> <?= strtoupper($car->getMarque()->getNom_marque()) ?></span>
+                              <?php }elseif($car->getMarque()->getId_marque() == 2){ ?>
+                                <span class="badge bg-success rounded-pill"><i class="fab fa-xbox"></i> <?= strtoupper($car->getMarque()->getNom_marque()) ?></span>
+                              <?php }else{ ?>
+                                <span class="badge bg-dark rounded-pill"><?= strtoupper($car->getMarque()->getNom_marque()) ?></span>
+                             <?php } ?>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                             Capacité
@@ -106,7 +112,7 @@ require_once('./views/public/templatePublic.php');
                      <h4>Marques</h4>
 
                      <?php foreach($tabMar as $cat){ ?>
-                     <li class="list-group-item text-center"><a class= "btn text-center" href="index.php?id=<?= $cat->getId_marque(); ?>"><?= strtoupper($cat->getNom_marque()); ?></a></li>
+                     <li class="list-group-item text-center m-1"><a class= "btn text-center" href="index.php?id=<?= $cat->getId_marque(); ?>"><?= strtoupper($cat->getNom_marque()); ?></a></li>
                         <?php } ?>
 
                   </div> 
