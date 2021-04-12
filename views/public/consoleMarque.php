@@ -6,7 +6,7 @@ require_once('./views/public/templatePublic.php');
 
 
 <div class="container">
-        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div id="carouselExampleControls" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item active">
                 <img src="./assets/images/wall1.jpeg" class="d-block w-100 " style="height:500px" alt="...">
