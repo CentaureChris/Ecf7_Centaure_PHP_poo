@@ -34,6 +34,16 @@ class AdminUserModel extends Driver{
         return $datas;
     }
 
+    public function getRank()
+    {
+        $sql = "SELECT * FROM rank";
+
+        $result = $this->getRequest($sql);
+        $rank = $result->fetchAll(PDO::FETCH_OBJ);
+       
+        return $rank;
+    }
+
     public function updateStatut(User $user)
     {
         $sql ="UPDATE user SET statut = :statut WHERE id = :id";

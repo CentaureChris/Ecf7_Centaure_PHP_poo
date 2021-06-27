@@ -32,8 +32,10 @@ class AdminUserController
     }
     public function inscription()
     {
+        AuthController::accesAdmin();
 
         $tabUser = $this->aduser->getUsers();
+        $tabRank = $this->aduser->getRank();
 
         if(isset($_POST['submit'])){
             if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) && strlen($_POST['pass']) >= 1){
@@ -72,7 +74,7 @@ class AdminUserController
         if(isset($_POST['submit'])){
             if(strlen($_POST['pass']) >= 1 && !empty($_POST['loginEmail'])){
                 $loginEmail = $_POST['loginEmail'];
-                $pass = $_POST['pass'];
+                $pass = md5($_POST['pass']);
                 $data_u = $this->aduser->signIn($loginEmail,  $pass);
                if(!empty($data_u)){
                     if($data_u->statut > 0){

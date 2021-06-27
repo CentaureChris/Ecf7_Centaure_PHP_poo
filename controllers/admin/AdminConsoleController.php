@@ -18,9 +18,16 @@ class AdminConsoleController
 
     public function listConsole()
     {
-        $consoles = $this->adcm->getConsole();
-        // var_dump($consoles);
-        require_once('./views/admin/consoles/adminConsoleItem.php');
+        if( isset($_POST['soumis']) && !empty($_POST['search'])){
+            $search = trim(htmlspecialchars(addslashes($_POST['search'])));
+            $consoles = $this->adcm->getConsole($search);
+            // var_dump($consoles);
+            require_once('./views/admin/consoles/adminConsoleItem.php');
+        }else{
+            $consoles = $this->adcm->getConsole();
+            // var_dump($consoles);
+            require_once('./views/admin/consoles/adminConsoleItem.php');
+        }
     }
 
     public function deleteConsole()
@@ -94,8 +101,6 @@ class AdminConsoleController
             
                 if(isset($_POST['submit'])){
 
-            
-
                     $marque = trim(addslashes(htmlentities($_POST['marque'])));
                     $editConsole->getMarque()->setId_marque($marque);
         
@@ -114,9 +119,12 @@ class AdminConsoleController
                     $prix = trim(addslashes(htmlentities($_POST['prix'])));
                     $editConsole->setPrix($prix);
         
-                   
-                    $image = $_FILES['image']['name'];
-                    $editConsole->setImage($image);
+                   if(!empty($_FILES['image']['name'])){
+                        $image = $_FILES['image']['name'];
+                        $editConsole->setImage($image);
+                    }else{
+                        $image = $editConsole->getImage();
+                    }
                     
                     $destination = "./assets/images/";
                     move_uploaded_file($_FILES['image']['tmp_name'], $destination . $image);
@@ -130,4 +138,5 @@ class AdminConsoleController
          require_once('./views/admin/consoles/adminEditConsole.php');
         }
     }
+
 }

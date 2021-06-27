@@ -10,6 +10,7 @@ private $modele;
 private $prix;
 private $quantite;
 private $capacite;
+private $nbrarticle;
 
 public function __construct()
     {
@@ -174,6 +175,26 @@ return $this->image;
 public function setImage($image)
 {
 $this->image = $image;
+
+return $this;
+}
+
+/**
+ * Get the value of nbrarticle
+ */ 
+public function getNbrarticle()
+{
+return $this->nbrarticle;
+}
+
+/**
+ * Set the value of nbrarticle
+ *
+ * @return  self
+ */ 
+public function setNbrarticle($nbrarticle)
+{
+$this->nbrarticle = $nbrarticle;
 
 return $this;
 }

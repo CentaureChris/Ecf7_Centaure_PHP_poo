@@ -1,11 +1,15 @@
-<?php ob_start(); 
+<?php 
+ob_start(); 
+
 // var_dump($console);
 require_once('./views/public/templatePublic.php');
+
 
 ?>
 
 
-<div class="container">
+<div class="">
+
         <div id="carouselExampleControls" class="carousel slide  carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item active">
@@ -26,14 +30,28 @@ require_once('./views/public/templatePublic.php');
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
               </button>
-          </div>
+          </div> 
           <!---end carrousel-->
-          <div class="row my-3">
+          <div class="row my-3 mx-3 ">
+          <div class="card col-3 " style="height: 300px;">
+                    <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post" class="input-group m-2">
+                        <input class="form-control text-center " type="search" name="search" id="search" placeholder="Rechecher...">
+                        <button type="submit" class="btn btn-outline-secondary" name="soumis"><i class="fas fa-search"></i></button>
+                      
+                     </form>
+
+                     <h4>Marques</h4>
+
+                     <?php foreach($tabMar as $cat){ ?>
+                     <li class="list-group-item text-center m-1"><a class= "btn text-center" href="index.php?id=<?= $cat->getId_marque(); ?>"><?= strtoupper($cat->getNom_marque()); ?></a></li>
+                        <?php } ?>
+
+                  </div> 
               <div class="col-8">
                 <div class="row row-cols-1 row-cols-md-2 g-4">
                 <?php if(is_array($console)){ foreach($console as $car) { ?>
                     <div class="col">
-                      <div class="card">
+                      <div class=" card">
                         <img src="./assets/images/<?= $car->getImage() ?>" class="card-img-top" alt="..." width="200px" height="200px">
                         <div class="card-body">
                           <h5 class="card-title"><?= strtoupper($car->getModele()) ?></h5>
@@ -65,27 +83,26 @@ require_once('./views/public/templatePublic.php');
                             <form action="index.php?action=checkout" method="post">
 
                             
-                          <input type="hidden" value="<?= $car->getId() ?>" name="id">
-                          <input type="hidden" value="<?= $car->getMarque()->getNom_marque() ?>" name="marque">
+                            <input type="hidden" value="<?= $car->getId() ?>" name="id">
+                            <input type="hidden" value="<?= $car->getMarque()->getNom_marque() ?>" name="marque">
                             <input type="hidden" value="<?= $car->getModele() ?>" name="modele">
                             <input type="hidden" value="<?= $car->getPrix() ?>" name="prix">
                             <input type="hidden" value="<?= $car->getImage() ?>" name="image">
                             <input type="hidden" value="<?= $car->getQuantite() ?>" name="quantite">
 
                             
-                            
-
+                           
                             <?php if($car->getQuantite() !=0 ){ ?>
                             <li class="text-end">
-                                <button class="btn btn-success m-2" name="envoyer" >Acheter</button>
+                                <button class="btn btn-success m-2" name="envoyer" >Acheter Immediatement</button>
                             </li>
                             <?php }else{ ?>
                                 <li class="text-end">
                                     <button class="btn btn-warning m-2" type="submit" name="envoyer" >Passer Commande</button>
                                 </li>
-                            
                             <?php } ?>
                             </form>
+                            <li class="text-end"><a href="index.php?action=addPanier&id=<?= $car->getId() ?>" class="btn btn-success">Ajouter au panier</a></li>
                           </ul>
                         </div>
                       </div>
@@ -101,23 +118,8 @@ require_once('./views/public/templatePublic.php');
               </div>
             </div>
               <!--end cards-->
-              
-                <div class="card col-3 " style="height: 300px;">
-                    <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post" class="input-group m-2">
-                        <input class="form-control text-center " type="search" name="search" id="search" placeholder="Rechecher...">
-                        <button type="submit" class="btn btn-outline-secondary" name="soumis"><i class="fas fa-search"></i></button>
-                      
-                     </form>
-
-                     <h4>Marques</h4>
-
-                     <?php foreach($tabMar as $cat){ ?>
-                     <li class="list-group-item text-center m-1"><a class= "btn text-center" href="index.php?id=<?= $cat->getId_marque(); ?>"><?= strtoupper($cat->getNom_marque()); ?></a></li>
-                        <?php } ?>
-
-                  </div> 
-          
     </div>
+  
     <?php
 require_once('footerPublic.php');
 // $contenu= ob_get_clean();

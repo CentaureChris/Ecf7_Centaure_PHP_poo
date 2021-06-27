@@ -110,15 +110,34 @@ class Router{
                 case 'pay':
                     $this->ctrpub->payment();
                     break;
+
+                    case 'payCart':
+                        $this->ctrpub->paymentCart();
+                        break;
                 
                 case 'success':
                     $this->ctrpub->confirmation();
+                    break;
+                
+                case 'successCart':
+                    $this->ctrpub->confirmationCart();
                     break;
             
                 case 'cancel':
                     $this->ctrpub->annulation();
                     break;
     
+                case 'panier':
+                    require_once('./views/public/userPanier.php');
+                    break;
+                    
+                case 'addPanier':
+                    $this->ctrpub->addCart();
+                    break;
+
+                case 'deleteItem':
+                    $this->ctrpub->removeArt();
+                    break;
 
                 // case 'order':
                 //     $this->ctrpub->orderCar();

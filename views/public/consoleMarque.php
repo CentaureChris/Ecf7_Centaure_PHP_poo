@@ -5,7 +5,7 @@ require_once('./views/public/templatePublic.php');
 ?>
 
 
-<div class="container">
+<div class="">
         <div id="carouselExampleControls" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item active">
@@ -28,7 +28,17 @@ require_once('./views/public/templatePublic.php');
               </button>
           </div>
           <!---end carrousel-->
-          <div class="row my-3">
+          <div class="row my-3 mx-3">
+          <div class="card col-3 " style="height: 300px;">
+                    <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post" class="input-group m-2">
+                        <input class="form-control text-center " type="search" name="search" id="search" placeholder="Rechecher...">
+                        <button type="submit" class="btn btn-outline-secondary" name="soumis"><i class="fas fa-search"></i></button>
+                     </form>
+                     <h4>Marques</h4>
+                     <?php foreach($tabMar as $cat){ ?>
+                     <li class="list-group-item text-center"><a class= "btn text-center" href="index.php?id=<?= $cat->getId_marque(); ?>"><?= strtoupper($cat->getNom_marque()); ?></a></li>
+                        <?php } ?>
+                  </div> 
               <div class="col-8">
                 <div class="row row-cols-1 row-cols-md-2 g-4">
                 <?php foreach($cons as $car) { ?>
@@ -39,10 +49,7 @@ require_once('./views/public/templatePublic.php');
                           <h5 class="card-title"><?= strtoupper($car->getModele()) ?></h5>
                           <p class="card-text"></p>
                           <ul class="list-group list-unstyled">
-                          <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Marque 
-                              <span class="badge bg-primary rounded-pill"><?= strtoupper($car->getMarque()->getNom_marque()) ?></span>
-                            </li>
+                          
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                             Capacité
                               <span class="badge bg-primary rounded-pill"><?= $car->getCapacite() ?> go</span>
@@ -77,31 +84,19 @@ require_once('./views/public/templatePublic.php');
                                 <li class="text-end">
                                     <button class="btn btn-warning m-2" type="submit" name="envoyer" >Passer Commande</button>
                                 </li>
-                            
                             <?php } ?>
                             </form>
+                            <li class="text-end"><a href="index.php?action=addPanier&id=<?= $car->getId() ?>" class="btn btn-success">Ajouter au panier</a></li>
                           </ul>
                         </div>
                       </div>
                     </div>
                     <?php } ?>
                     <div class="col">
-                    
                     </div>
               </div>
             </div>
-              <!--end cards-->
-              
-                <div class="card col-3 " style="height: 300px;">
-                    <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post" class="input-group m-2">
-                        <input class="form-control text-center " type="search" name="search" id="search" placeholder="Rechecher...">
-                        <button type="submit" class="btn btn-outline-secondary" name="soumis"><i class="fas fa-search"></i></button>
-                     </form>
-                     <?php foreach($tabMar as $cat){ ?>
-                     <li class="list-group-item text-center"><a class= "btn text-center" href="index.php?id=<?= $cat->getId_marque(); ?>"><?= strtoupper($cat->getNom_marque()); ?></a></li>
-                        <?php } ?>
-                  </div> 
-          
+              <!--end cards-->         
     </div>
     <?php
 

@@ -1,5 +1,5 @@
 <?php ob_start();
-// var_dump($tabUser);
+// var_dump($tabRank);
 require_once('./views/templateAdmin.php');
 
 ?>
@@ -38,7 +38,7 @@ require_once('./views/templateAdmin.php');
             <label for="grade">Grade </label>
             <select id="id_g" name="rank" class="form-control">
                 <option value="">Choisir</option>
-               <?php foreach ($tabUser as $grade) {; ?>
+               <?php foreach ($tabRank as $grade) {; ?>
                    <option value="<?=$grade->id_rank; ?>"> <?=$grade->nom_rank ; ?> </option>
              <?php };?>
             </select>

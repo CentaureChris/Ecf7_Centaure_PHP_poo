@@ -106,6 +106,7 @@ class AdminConsoleModel extends Driver{
         return $editconsole;
         }
     }
+    
     public function updateConsole(Console $updateC){
         if($updateC->getImage() === ""){
 

@@ -9,7 +9,7 @@ abstract class Driver{
         if(self::$bd === null){
     
             try{
-               self::$bd  = new PDO('mysql:host=localhost; dbname=bddecf7','root','root');
+               self::$bd  = new PDO('mysql:host=localhost; dbname=projetDwwm','root','root');
              
             }catch(PDOException $e){
                 die('Echec de connexion: '.$e->getMessage());

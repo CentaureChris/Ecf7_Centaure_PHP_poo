@@ -31,7 +31,7 @@ require_once('./views/public/templatePublic.php');
       <input type="hidden" id="marque" value="<?= $marque;?>">
       <input type="hidden" id="prix" value="<?= $prix;?>">
       <input type="hidden" id="nb" value="<?= $nb;?>">
-
+      <input type="hidden" id="img" value="<?= $image ?>">
 
       <button id="checkout-button" class="btn btn-success col-12 mt-2" >Valider</button>
     </form>

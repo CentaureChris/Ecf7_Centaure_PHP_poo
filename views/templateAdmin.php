@@ -28,8 +28,7 @@ body{
   <h3 class="m-3"><a href="index.php" class="text-white"><i class="fas fa-home">Accueil</i></a></h3>
   <?php if(isset($_SESSION['Auth'])){ ?>
 <h3 class="m-3 text-end">Bienvenue <?= ucfirst($_SESSION['Auth']->nom)." ".ucfirst($_SESSION['Auth']->prenom)  ;?> </h3>
-<?php } ?>
-   <ul class="menu cf">
+   <ul class="menu cf" >
   <li><a href="index.php?action=logout" class="" onclick="return confirm('Valider la deconnexion?')"><i class="fas fa-sign-out-alt" ></i> Quitter</a></li>
   <li>
     <a href="index.php?action=list_console"><i class="fas fa-gamepad fa-2x"></i> Console</a>
@@ -46,12 +45,13 @@ body{
     <ul class="submenu">
     <li><a href="index.php?action=add_console">Console <i class="fas fa-plus"></i> <i class="fas fa-gamepad "></i></a></li>
     <li><a href="">Marque <i class="fas fa-plus"></i></a></li>
-    <li><a href="index.php?action=inscription">Utilisateur <i class="fas fa-plus"></i> <i class="fas fa-users"></i></a></li>
+    <li><a href="index.php?action=inscription" >Utilisateur <i class="fas fa-plus"></i> <i class="fas fa-users"></i></a></li>
 
       
     </ul>			
   </li>
 </ul>
+<?php } ?>
 
 </body>
 </html>
